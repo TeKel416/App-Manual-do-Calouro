@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="verde_ifes">#FF09681B</color>
+    <color name="primary">#0D6EFD</color>
 </resources>

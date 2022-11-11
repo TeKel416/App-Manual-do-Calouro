@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">app-manual-do-calouro</string>
+    <string name="app_name">Manual do Calouro</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
     <string name="rod_link"><u>Baixar ROD</u></string>
     <string name="login"><u>Fazer Login</u></string>
     <string name="cadastro"><u>Cadastre-se</u></string>
+    <string name="esqueci"><u>Esqueci minha senha</u></string>
     <string name="sobre">Sobre o Manual do Calouro&#8482;</string>
 </resources>
