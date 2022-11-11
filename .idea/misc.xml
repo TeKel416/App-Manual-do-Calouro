@@ -6,12 +6,20 @@
         <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/drawable/ic_map_icon_72.xml" value="0.113" />
         <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/drawable/ic_scale_icon_72.xml" value="0.113" />
         <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/layout/activity_cadastro.xml" value="0.33" />
-        <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/layout/activity_horario.xml" value="0.33" />
-        <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/layout/activity_horario.xml" value="0.49074074074074076" />
         <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/layout/aulacell_item.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/layout/diasemanacell_item.xml" value="0.5" />
-        <entry key="..\:/Users/20201tiimi0152/AndroidStudioProjects/AppManualdoCalouro2/app/src/main/res/layout/horarioaulacell_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/drawable/ic_user_profile_icon_72.xml" value="0.2985" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/drawable/ic_user_tie_solid_24.xml" value="0.2985" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/layout/activity_contato.xml" value="0.33" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/layout/activity_horario.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/layout/activity_rod.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/layout/activity_sobre.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/layout/diasemanacell_item.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/layout/fragment_prof_view.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/layout/fragment_serv_view.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/layout/horarioaulacell_item.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/layout/item_contato.xml" value="0.33" />
+        <entry key="..\:/Users/20201tiimi0160/AndroidStudioProjects/App-Manual-do-Calouro/app/src/main/res/menu/botton_nav_menu.xml" value="0.365625" />
       </map>
     </option>
   </component>
