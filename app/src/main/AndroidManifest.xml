@@ -17,6 +17,9 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".ContatoActivity"
+            android:exported="false" />
+        <activity
             android:name=".HorarioActivity"
             android:exported="false" />
         <activity
