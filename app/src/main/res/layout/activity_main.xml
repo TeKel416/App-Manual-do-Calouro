@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/verde_ifes"
+    android:backgroundTint="@color/verde_ifes"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -82,6 +83,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <ImageButton
+                        android:id="@+id/btnRod"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="#00FFFFFF"
+                        android:tint="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_scale_icon_72" />
+
                     <TextView
                         android:id="@+id/tvRod"
                         android:layout_width="wrap_content"
@@ -98,9 +113,15 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btnRod" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clHorario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/btnRod"
+                        android:id="@+id/btnHorario"
                         android:layout_width="88dp"
                         android:layout_height="88dp"
                         android:layout_marginStart="8dp"
@@ -111,13 +132,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_scale_icon_72" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clHorario"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                        app:srcCompat="@drawable/ic_baseline_schedule_72" />
 
                     <TextView
                         android:id="@+id/tvHorario"
@@ -135,20 +150,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btnHorario" />
-
-                    <ImageButton
-                        android:id="@+id/btnHorario"
-                        android:layout_width="88dp"
-                        android:layout_height="88dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="#00FFFFFF"
-                        android:tint="#FFFFFF"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_baseline_schedule_72" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </TableRow>
@@ -303,10 +304,15 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#00FF0000"
+            android:background="#00EF0A0A"
             android:fontFamily="@font/gothic_a1_semibold"
+            android:foregroundTint="#00FFFFFF"
             android:padding="0dp"
+            android:shadowColor="#00FFFFFF"
             android:text="Fale conosco"
+            android:textColorHighlight="#00FFFFFF"
+            android:textColorHint="#00FFFFFF"
+            android:textColorLink="#00FFFFFF"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
