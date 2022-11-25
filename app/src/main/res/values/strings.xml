@@ -7,4 +7,17 @@
     <string name="cadastro"><u>Cadastre-se</u></string>
     <string name="esqueci"><u>Esqueci minha senha</u></string>
     <string name="sobre">Sobre o Manual do Calouro&#8482;</string>
+    <string-array name="lista_curso">
+        <item>INFO</item>
+        <item>MEC</item>
+        <item>IOT</item>
+    </string-array>
+    <string-array name="lista_modulo">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
 </resources>
