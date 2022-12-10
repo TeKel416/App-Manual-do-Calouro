@@ -1,4 +1,4 @@
-package barros.maria.app_manual_do_calouro;
+package barros.maria.app_manual_do_calouro.fragment;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import barros.maria.app_manual_do_calouro.R;
 
 /**
  * A simple {@link Fragment} subclass.

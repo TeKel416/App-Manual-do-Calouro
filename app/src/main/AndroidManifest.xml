@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="barros.maria.app_manual_do_calouro">
+    package="barros.maria.app_manual_do_calouro" >
 
     <application
         android:allowBackup="true"
@@ -12,28 +12,58 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppManualdoCalouro"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name=".FaleConoscoActivity"
-            android:exported="false" />
+            android:name=".CadastroActivity2"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
-            android:name=".SobreActivity"
-            android:exported="false" />
+            android:name=".activity.FaleConoscoActivity"
+            android:exported="false"
+            android:label="Fale Conosco" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
         <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+            android:name=".activity.SobreActivity"
+            android:exported="false"
+            android:label="Sobre" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
         <activity
-            android:name=".ContatoActivity"
-            android:exported="false" />
+            android:name=".activity.LoginActivity"
+            android:exported="false"
+            android:label="Login" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
         <activity
-            android:name=".HorarioActivity"
-            android:exported="false" />
+            android:name=".activity.HorarioActivity"
+            android:exported="false"
+            android:label="Horário" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
         <activity
-            android:name=".CadastroActivity"
-            android:exported="false" />
+            android:name=".activity.CadastroActivity"
+            android:exported="false"
+            android:label="Cadasatro" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".activity.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppManualdoCalouroNoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

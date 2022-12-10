@@ -4,23 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HorarioActivity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbHorario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".activity.HorarioActivity">
 
     <HorizontalScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,11 +29,10 @@
         android:id="@+id/constraintLayout10"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbHorario">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout8"
@@ -70,7 +57,6 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gothic_a1_black"
                 android:text="Curso"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +77,6 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gothic_a1_black"
                 android:text="Módulo"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -115,8 +100,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/primary"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             android:paddingLeft="6dp"
             android:paddingTop="6dp"
             android:paddingRight="6dp"

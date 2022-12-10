@@ -5,18 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/verde_ifes"
-    tools:context=".LoginActivity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".activity.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -24,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbLogin">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/ivLoginTitulo"
@@ -48,7 +37,6 @@
                 android:id="@+id/tvConta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/gothic_a1_semibold"
                 android:text="Ainda não tem uma conta? | "
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -61,7 +49,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#00FFFFFF"
-                android:fontFamily="@font/gothic_a1_black"
                 android:padding="0dp"
                 android:text="@string/cadastro"
                 android:textAllCaps="false"
@@ -91,7 +78,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:fontFamily="@font/gothic_a1"
                 android:hint="Senha"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
@@ -108,7 +94,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:fontFamily="@font/gothic_a1"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
@@ -124,7 +109,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="@color/primary"
-                android:fontFamily="@font/gothic_a1_medium"
                 android:text="ENTRAR"
                 android:textAllCaps="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -138,7 +122,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="#00FFFFFF"
-                android:fontFamily="@font/gothic_a1_medium"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
