@@ -29,6 +29,21 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView">
 
             <EditText
+                android:id="@+id/etCadNome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:hint="Nome"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
                 android:id="@+id/etCadEmail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -41,22 +56,7 @@
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/etCadEmailCheck"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:ems="10"
-                android:hint="Confirme seu email"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCadEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/etCadNome" />
 
             <EditText
                 android:id="@+id/etCadSenha"
@@ -71,7 +71,7 @@
                 android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCadEmailCheck" />
+                app:layout_constraintTop_toBottomOf="@+id/etCadEmail" />
 
             <EditText
                 android:id="@+id/etCadSenhaCheck"
@@ -112,29 +112,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etMatricula">
 
-                <ImageButton
-                    android:id="@+id/imbPhoto"
+                <ImageView
+                    android:id="@+id/imvPhoto"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/imb_height"
-                    android:background="#00FFFFFF"
-                    android:padding="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@drawable/ic_user_profile_icon_72" />
+                    app:srcCompat="@drawable/ic_user_profile_icon_72" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="126dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="16dp"
                     android:text="Escolha sua imagem de perfil:"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imbPhoto"
+                    app:layout_constraintEnd_toStartOf="@+id/imvPhoto"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_wrapBehaviorInParent="horizontal_only" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button

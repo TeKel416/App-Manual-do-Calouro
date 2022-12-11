@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         checkForPermissions(permissions);
 
+        Button      btnLogar       = findViewById(R.id.btnLogar);
         ImageButton btnMapa        = findViewById(R.id.btnMapa);
         ImageButton btnRod         = findViewById(R.id.btnRod);
         ImageButton btnHorario     = findViewById(R.id.btnHorario);
@@ -42,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btnSobre       = findViewById(R.id.btnSobre);
         ImageButton btnContatos    = findViewById(R.id.btnContatos);
         Button      btnFaleConosco = findViewById(R.id.btnFaleConosco);
+
+        btnLogar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+
+                startActivity(i);
+            }
+        });
 
 //        btnMapa.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -51,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
-
+        // ROD Envia para o Site
 //        btnRod.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -69,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        // Calendário envia pro site
 //        btnCalendario.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

@@ -18,7 +18,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -48,31 +48,26 @@ public class CadastroActivity extends AppCompatActivity {
 
         String currentPhotoPath = cadastroViewModel.getCurrentPhotoPath();
         if (!currentPhotoPath.isEmpty()) {
-            ImageButton imbPhoto = findViewById(R.id.imbPhoto);
-            Bitmap bitmap = Util.getBitmap(currentPhotoPath, imbPhoto.getWidth(), imbPhoto.getHeight());
-            imbPhoto.setImageBitmap(bitmap);
+            ImageView imvPhoto = findViewById(R.id.imvPhoto);
+            Bitmap bitmap = Util.getBitmap(currentPhotoPath, imvPhoto.getWidth(), imvPhoto.getHeight());
+            imvPhoto.setImageBitmap(bitmap);
         }
 
         Button btnRegister = findViewById(R.id.btnCadastrar);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText etName = findViewById(R.id.etCadNome);
+                final String name = etName.getText().toString();
+                if (name.isEmpty()) {
+                    Toast.makeText(CadastroActivity.this, "Campo de nome não preenchido", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 EditText etLogin = findViewById(R.id.etCadEmail);
-                final String login = etLogin.getText().toString();
+                String login = etLogin.getText().toString();
                 if (login.isEmpty()) {
                     Toast.makeText(CadastroActivity.this, "Campo de email não preenchido", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                EditText etLoginCheck = findViewById(R.id.etCadEmailCheck);
-                String loginCheck = etLoginCheck.getText().toString();
-                if (loginCheck.isEmpty()) {
-                    Toast.makeText(CadastroActivity.this, "Campo de checagem de email não preenchido", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                if (!login.equals(loginCheck)) {
-                    Toast.makeText(CadastroActivity.this, "Emails não idênticos", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -109,7 +104,7 @@ public class CadastroActivity extends AppCompatActivity {
                 }
 
                 try {
-                    int h = (int) getResources().getDimension(R.dimen.imb_height);
+                    int h = (int) getResources().getDimension(R.dimen.imv_height);
                     Util.scaleImage(currentPhotoPath, -1, 2*h);
 
                 } catch (FileNotFoundException e) {
@@ -117,7 +112,7 @@ public class CadastroActivity extends AppCompatActivity {
                     return;
                 }
 
-                LiveData<Boolean> resultLD = cadastroViewModel.register(login, password, enrollment, currentPhotoPath);
+                LiveData<Boolean> resultLD = cadastroViewModel.register(name, login, password, enrollment, currentPhotoPath);
                 
                 resultLD.observe(CadastroActivity.this, new Observer<Boolean>() {
                     @Override
@@ -133,8 +128,8 @@ public class CadastroActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton imbPhoto = findViewById(R.id.imbPhoto);
-        imbPhoto.setOnClickListener(new View.OnClickListener() {
+        ImageView imvPhoto = findViewById(R.id.imvPhoto);
+        imvPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { dispatchGalleryOrCameraIntent(); }
         });
@@ -187,7 +182,7 @@ public class CadastroActivity extends AppCompatActivity {
             String currentPhotoPath = cadastroViewModel.getCurrentPhotoPath();
 
             if (resultCode == Activity.RESULT_OK) {
-                ImageButton imbPhoto = findViewById(R.id.imbPhoto);
+                ImageView imvPhoto = findViewById(R.id.imvPhoto);
 
                 Uri selectedPhoto = data.getData();
 
@@ -202,8 +197,8 @@ public class CadastroActivity extends AppCompatActivity {
                     }
                 }
 
-                Bitmap bitmap = Util.getBitmap(currentPhotoPath, imbPhoto.getWidth(), imbPhoto.getHeight());
-                imbPhoto.setImageBitmap(bitmap);
+                Bitmap bitmap = Util.getBitmap(currentPhotoPath, imvPhoto.getWidth(), imvPhoto.getHeight());
+                imvPhoto.setImageBitmap(bitmap);
 
             } else {
                 File f = new File(currentPhotoPath);

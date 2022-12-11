@@ -22,16 +22,18 @@ public class APIManager {
 
     /**
      * Método responsável por criar uma requisição HTTP para registrar um novo usuário
+     * @param name
      * @param login
      * @param password
      * @param enrollment
      * @param imgLocation
      * @return
      */
-    public boolean register(String login, String password, String enrollment, String imgLocation) {
-        HttpRequest httpRequest = new HttpRequest(Config.URL + "", "POST", "UTF-8");
-        httpRequest.addParam("novo_login", login);
-        httpRequest.addParam("nova_senha", password);
+    public boolean register(String name, String login, String password, String enrollment, String imgLocation) {
+        HttpRequest httpRequest = new HttpRequest(Config.URL + "api/v1/users/new", "POST", "UTF-8");
+        httpRequest.addParam("nome", name);
+        httpRequest.addParam("email", login);
+        httpRequest.addParam("senha", password);
         httpRequest.addParam("matricula", enrollment);
         httpRequest.addFile("img", new File(imgLocation));
 

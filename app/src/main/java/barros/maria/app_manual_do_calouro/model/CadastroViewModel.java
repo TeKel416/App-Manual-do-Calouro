@@ -30,7 +30,7 @@ public class CadastroViewModel extends AndroidViewModel {
      * @param imgLocation
      * @return
      */
-    public LiveData<Boolean> register(String login, String senha, String enrollment, String imgLocation) {
+    public LiveData<Boolean> register(String name, String login, String senha, String enrollment, String imgLocation) {
         MutableLiveData<Boolean> result = new MutableLiveData<>();
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -40,7 +40,7 @@ public class CadastroViewModel extends AndroidViewModel {
             public void run() {
                 APIManager apiManager = new APIManager(getApplication());
 
-                boolean b = apiManager.register(login, senha, enrollment, imgLocation);
+                boolean b = apiManager.register(name, login, senha, enrollment, imgLocation);
 
                 result.postValue(b);
             }
