@@ -14,13 +14,6 @@
         android:theme="@style/Theme.AppManualdoCalouro"
         tools:targetApi="31" >
         <activity
-            android:name=".CadastroActivity2"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".activity.FaleConoscoActivity"
             android:exported="false"
             android:label="Fale Conosco" >
@@ -74,6 +67,16 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="barros.maria.app_manual_do_calouro.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
