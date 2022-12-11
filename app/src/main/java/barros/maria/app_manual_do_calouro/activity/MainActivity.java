@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View view) {
 //                Intent i = new Intent(MainActivity.this, MapaActivity.class);
-
+//
 //                startActivity(i);
 //            }
 //        });
@@ -55,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
 //        btnRod.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this)
+//                Intent i = new Intent(MainActivity.this, RodActivity.class)
+//
+//                startActivity(i);
 //            }
 //        });
 
@@ -68,14 +70,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnCalendario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, HorarioActivity.class);
-
-                startActivity(i);
-            }
-        });
+//        btnCalendario.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(MainActivity.this, CalendarioActivity.class);
+//
+//                startActivity(i);
+//            }
+//        });
 
         btnSobre.setOnClickListener(new View.OnClickListener() {
             @Override
