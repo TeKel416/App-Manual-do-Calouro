@@ -53,8 +53,8 @@ public class HttpRequest {
     HashMap<String, String> params = new HashMap<>();
     HashMap<String, File> files = new HashMap<>();
 
-    String user = "";
-    String password = "";
+    String email = "";
+    String senha = "";
 
     int timeout = 3000;
 
@@ -87,9 +87,9 @@ public class HttpRequest {
     }
 
     // Caso seja necessario autenticacao, seta as informacoes de user e password
-    public void setBasicAuth(String user, String password) {
-        this.user = user;
-        this.password = password;
+    public void setBasicAuth(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
     }
 
     // Seta o tempo maximo (em milisegundos) de espera por uma resposta do servidor.
@@ -102,7 +102,7 @@ public class HttpRequest {
     // o qual deve ser convertido para o dado originalmente enviado.
     public InputStream execute() throws IOException {
 
-        if(method == "GET") {
+        if(method.equals("GET")) {
             requestUrl = requestUrl + "?";
             Iterator it = params.entrySet().iterator();
             while (it.hasNext()) {
@@ -127,14 +127,14 @@ public class HttpRequest {
         // GET or POST
         httpConn.setRequestMethod(method);
 
-        if(!this.user.isEmpty() && !this.password.isEmpty()) {
-            String auth = user + ":" + password;
+        if(!this.email.isEmpty() && !this.senha.isEmpty()) {
+            String auth = email + ":" + senha;
             byte[] encodedAuth = Base64.encode(auth.getBytes(), Base64.NO_WRAP);
             String authHeaderValue = "Basic " + new String(encodedAuth);
             httpConn.setRequestProperty("Authorization", authHeaderValue);
         }
 
-        if(method == "POST") {
+        if(method.equals("POST")) {
             boundary = "===" + System.currentTimeMillis() + "===";
             httpConn.setDoOutput(true);    // indicates POST method
             httpConn.setRequestProperty("Content-Type",

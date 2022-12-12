@@ -40,19 +40,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EditText etLogin = findViewById(R.id.etLoginEmail);
-                final String login = etLogin.getText().toString();
+                final String email = etLogin.getText().toString();
 
                 EditText etPassword = findViewById(R.id.etLoginSenha);
-                final String password = etPassword.getText().toString();
+                final String senha = etPassword.getText().toString();
 
-                LiveData<Boolean> resultLD = loginViewModel.login(login, password);
+                LiveData<Boolean> resultLD = loginViewModel.login(email, senha);
 
                 resultLD.observe(LoginActivity.this, new Observer<Boolean>() {
                     @Override
                     public void onChanged(Boolean aBoolean) {
                         if (aBoolean) {
-                            Config.setLogin(LoginActivity.this, login);
-                            Config.setPassword(LoginActivity.this, password);
+                            Config.setLogin(LoginActivity.this, email);
+                            Config.setPassword(LoginActivity.this, senha);
 
                             Toast.makeText(LoginActivity.this, "Login realizado com sucesso", Toast.LENGTH_LONG).show();
 
