@@ -24,13 +24,14 @@ public class CadastroViewModel extends AndroidViewModel {
 
     /**
      * Método responsável por criar e executar uma requisição para adicionar um novo usuário
+     * @param name
      * @param login
-     * @param senha
+     * @param password
      * @param enrollment
      * @param imgLocation
      * @return
      */
-    public LiveData<Boolean> register(String name, String login, String senha, String enrollment, String imgLocation) {
+    public LiveData<Boolean> register(String name, String login, String password, String enrollment, String imgLocation) {
         MutableLiveData<Boolean> result = new MutableLiveData<>();
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -40,7 +41,7 @@ public class CadastroViewModel extends AndroidViewModel {
             public void run() {
                 APIManager apiManager = new APIManager(getApplication());
 
-                boolean b = apiManager.register(name, login, senha, enrollment, imgLocation);
+                boolean b = apiManager.register(name, login, password, enrollment, imgLocation);
 
                 result.postValue(b);
             }

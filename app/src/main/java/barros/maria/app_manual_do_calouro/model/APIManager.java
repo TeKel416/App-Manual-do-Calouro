@@ -30,7 +30,7 @@ public class APIManager {
      * @return
      */
     public boolean register(String name, String login, String password, String enrollment, String imgLocation) {
-        HttpRequest httpRequest = new HttpRequest(Config.URL + "api/v1/users/new", "POST", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.URL + "/api/v1/android/cadastro", "POST", "UTF-8");
         httpRequest.addParam("nome", name);
         httpRequest.addParam("email", login);
         httpRequest.addParam("senha", password);
