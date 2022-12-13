@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import barros.maria.app_manual_do_calouro.R;
+import barros.maria.app_manual_do_calouro.model.Horario;
 
 public class MainActivity extends AppCompatActivity {
 

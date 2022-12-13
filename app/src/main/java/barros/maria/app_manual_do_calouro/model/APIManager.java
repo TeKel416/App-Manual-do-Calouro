@@ -10,7 +10,9 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import barros.maria.app_manual_do_calouro.util.Config;
@@ -112,8 +114,10 @@ public class APIManager {
      * @param modulo
      * @return
      */
-    public List<Horario> getHorario(Integer curso, Integer modulo) {
+    public HashMap<String, List<Horario>> getHorario(Integer curso, Integer modulo) {
         List<Horario> horariosList = new ArrayList<>();
+        List<Horario> horaList     = new ArrayList<>();
+        HashMap<String, List<Horario>> map = new HashMap<>();
 
         String email = Config.getLogin(context);
         String senha = Config.getPassword(context);
@@ -140,7 +144,8 @@ public class APIManager {
             int success = jsonObject.getInt("success");
 
             if (success == 1) {
-                JSONArray jsonArray = jsonObject.getJSONArray("content");
+                JSONArray jsonArray = jsonObject.getJSONArray("aulas");
+                JSONArray jArrayHora = jsonObject.getJSONArray("horas");
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jHorario = jsonArray.getJSONObject(i);
@@ -156,18 +161,33 @@ public class APIManager {
                     String professor = jHorario.getString("professor");
 
                     Horario horario = new Horario();
-                    horario.id_dia_semana = id_dia_semana;
-                    horario.id_horario_aula = id_horario_aula;
-                    horario.id_turma = id_turma;
-                    horario.grupo = grupo;
+                    horario.id_dia_semana    = id_dia_semana;
+                    horario.id_horario_aula  = id_horario_aula;
+                    horario.id_turma         = id_turma;
+                    horario.grupo            = grupo;
                     horario.hora_aula_inicio = hora_aula_inicio;
-                    horario.hora_aula_fim = hora_aula_fim;
-                    horario.sala = sala;
-                    horario.materia = materia;
-                    horario.professor = professor;
+                    horario.hora_aula_fim    = hora_aula_fim;
+                    horario.sala             = sala;
+                    horario.materia          = materia;
+                    horario.professor        = professor;
 
                     horariosList.add(horario);
                 }
+                map.put("aulas", horariosList);
+
+                for (int j = 0; j < jArrayHora.length(); j++) {
+                    JSONObject jHora = jArrayHora.getJSONObject(j);
+
+                    String hora_aula_inicio = jHora.getString("hora_aula_inicio");
+                    String hora_aula_fim    = jHora.getString("hora_aula_fim");
+
+                    Horario hora = new Horario();
+                    hora.hora_aula_inicio = hora_aula_inicio;
+                    hora.hora_aula_fim    = hora_aula_fim;
+
+                    horaList.add(hora);
+                }
+                map.put("horas", horaList);
             }
 
         } catch (IOException e) {
@@ -178,6 +198,6 @@ public class APIManager {
             Log.e("HTTP RESULT", result);
         }
 
-        return horariosList;
+        return map;
     }
 }
