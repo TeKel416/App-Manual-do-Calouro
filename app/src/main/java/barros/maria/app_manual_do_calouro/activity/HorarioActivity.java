@@ -118,12 +118,16 @@ public class HorarioActivity extends AppCompatActivity {
                             a.professor = aula.professor;
                             duble.set(0, a);
 
+                            lAula2.setEnabled(false);
+
                             if (aulas.get(count+1).grupo.equals("B")) {
                                 b = duble.get(1);
                                 b.sala = aulas.get(count+1).sala;
                                 b.materia = aulas.get(count+1).materia;
                                 b.professor = aulas.get(count+1).professor;
                                 duble.set(1, b);
+                                
+                                lAula2.setEnabled(true);
 
                                 count++;
                             }
@@ -134,6 +138,8 @@ public class HorarioActivity extends AppCompatActivity {
                             b.materia = aula.materia;
                             b.professor = aula.professor;
                             duble.set(1, b);
+
+                            lAula2.setEnabled(true);
                         }
 
                         tr.addView(lAula1);
