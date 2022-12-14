@@ -3,9 +3,10 @@ package barros.maria.app_manual_do_calouro.model;
 /**
  *
  */
-public class ContatoProfessor {
+public class Contato {
     public Integer id_usuario;
     public String nom_usuario;
+    public String dsc_setor;
     public String regras;
     public String img_perfil;
     public String hora_inicio;

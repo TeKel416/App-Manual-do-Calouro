@@ -152,17 +152,17 @@ public class APIManager {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jHorario = jsonArray.getJSONObject(i);
 
-                    Integer id_dia_semana = jHorario.getInt("id_dia_semana");
-                    Integer id_horario_aula = jHorario.getInt("id_horario_aula");
-                    Integer id_turma = jHorario.getInt("id_turma");
-                    String grupo = jHorario.getString("grupo");
-                    String hora_aula_inicio = jHorario.getString("hora_aula_inicio");
-                    String hora_aula_fim = jHorario.getString("hora_aula_fim");
-                    String sala = jHorario.getString("sala");
-                    String materia = jHorario.getString("materia");
-                    String professor = jHorario.getString("professor");
-
                     Horario horario = new Horario();
+                    Integer id_dia_semana    = jHorario.getInt("id_dia_semana");
+                    Integer id_horario_aula  = jHorario.getInt("id_horario_aula");
+                    Integer id_turma         = jHorario.getInt("id_turma");
+                    String  grupo            = jHorario.getString("grupo");
+                    String  hora_aula_inicio = jHorario.getString("hora_aula_inicio");
+                    String  hora_aula_fim    = jHorario.getString("hora_aula_fim");
+                    String  sala             = jHorario.getString("sala");
+                    String  materia          = jHorario.getString("materia");
+                    String  professor        = jHorario.getString("professor");
+
                     horario.id_dia_semana    = id_dia_semana;
                     horario.id_horario_aula  = id_horario_aula;
                     horario.id_turma         = id_turma;
@@ -190,6 +190,94 @@ public class APIManager {
                     horaList.add(hora);
                 }
                 map.put("horas", horaList);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("HTTP RESULT", result);
+        }
+
+        return map;
+    }
+
+    public HashMap<String, List<Contato>> getContato() {
+        List<Contato> servList = new ArrayList<>();
+        List<Contato> profList = new ArrayList<>();
+        HashMap<String, List<Contato>> map = new HashMap<>();
+
+        HttpRequest httpRequest = new HttpRequest(Config.URL + "/contatos", "GET", "UTF-8");
+
+        String result = "";
+
+        try {
+            InputStream is = httpRequest.execute();
+
+            result = Util.inputStream2String(is, "UTF-8");
+
+            httpRequest.finish();
+
+            Log.i("HTTP HORARIO RESULT", result);
+
+            JSONObject jsonObject = new JSONObject(result);
+
+            int success = jsonObject.getInt("success");
+
+            if (success == 1) {
+                JSONObject content = jsonObject.getJSONObject("content");
+
+                JSONArray jServArray = content.getJSONArray("servidor");
+                JSONArray jProfArray = content.getJSONArray("professor");
+
+                for (int i = 0; i < jServArray.length(); i++) {
+                    JSONObject jServ = jServArray.getJSONObject(i);
+
+                    Integer id_usuario  = jServ.getInt("id_usuario");
+                    String  nom_usuario = jServ.getString("nom_usuario");
+                    String  dsc_setor   = jServ.getString("dsc_setor");
+                    String  img_perfil  = jServ.getString("img_perfil");
+                    String  hora_inicio = jServ.getString("hora_inicio");
+                    String  hora_fim    = jServ.getString("hora_fim");
+                    String  num_sala    = jServ.getString("num_sala");
+
+                    Contato contato = new Contato();
+                    contato.id_usuario  = id_usuario;
+                    contato.nom_usuario = nom_usuario;
+                    contato.dsc_setor   = dsc_setor;
+                    contato.img_perfil  = img_perfil;
+                    contato.hora_inicio = hora_inicio;
+                    contato.hora_fim    = hora_fim;
+                    contato.num_sala    = num_sala;
+
+                    servList.add(contato);
+                }
+                map.put("serv", servList);
+
+                for (int j = 0; j < jProfArray.length(); j++) {
+                    JSONObject jProf = jProfArray.getJSONObject(j);
+
+                    Integer id_usuario  = jProf.getInt("id_usuario");
+                    String  nom_usuario = jProf.getString("nom_usuario");
+                    String  regras      = jProf.getString("regras");
+                    String  img_perfil  = jProf.getString("img_perfil");
+                    String  hora_inicio = jProf.getString("hora_inicio");
+                    String  hora_fim    = jProf.getString("hora_fim");
+                    String  num_sala    = jProf.getString("num_sala");
+
+                    Contato contato = new Contato();
+                    contato.id_usuario  = id_usuario;
+                    contato.nom_usuario = nom_usuario;
+                    contato.regras      = regras;
+                    contato.img_perfil  = img_perfil;
+                    contato.hora_inicio = hora_inicio;
+                    contato.hora_fim    = hora_fim;
+                    contato.num_sala    = num_sala;
+
+                    profList.add(contato);
+                }
+                map.put("prof", profList);
             }
 
         } catch (IOException e) {

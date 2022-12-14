@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,7 @@ import java.util.List;
 
 import barros.maria.app_manual_do_calouro.R;
 import barros.maria.app_manual_do_calouro.model.Horario;
+import barros.maria.app_manual_do_calouro.util.Config;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,23 +56,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btnMapa.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this, MapaActivity.class);
-//
-//                startActivity(i);
-//            }
-//        });
-        // ROD Envia para o Site
-//        btnRod.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this, RodActivity.class)
-//
-//                startActivity(i);
-//            }
-//        });
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(Config.URL + "/map"));
+
+                startActivity(i);
+            }
+        });
+
+        btnRod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(Config.URL + "/rod"));
+
+                startActivity(i);
+            }
+        });
 
         btnHorario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,15 +82,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        // Calendário envia pro site
-//        btnCalendario.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this, CalendarioActivity.class);
-//
-//                startActivity(i);
-//            }
-//        });
+
+        btnCalendario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(Config.URL + "/calendar"));
+
+                startActivity(i);
+            }
+        });
 
         btnSobre.setOnClickListener(new View.OnClickListener() {
             @Override

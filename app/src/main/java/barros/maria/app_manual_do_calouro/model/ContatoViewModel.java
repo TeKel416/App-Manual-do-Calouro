@@ -12,15 +12,13 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class HorarioViewModel extends AndroidViewModel {
+public class ContatoViewModel extends AndroidViewModel {
 
-    public HorarioViewModel(@NonNull Application application) {
-        super(application);
-    }
+    public ContatoViewModel(@NonNull Application application) { super(application); }
 
-    public LiveData<HashMap<String, List<Horario>>> getHorariosLD(Integer curso, Integer modulo) {
+    public LiveData<HashMap<String, List<Contato>>> getContato() {
 
-        MutableLiveData<HashMap<String, List<Horario>>> result = new MutableLiveData<>();
+        MutableLiveData<HashMap<String, List<Contato>>> result = new MutableLiveData<>();
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
@@ -30,7 +28,7 @@ public class HorarioViewModel extends AndroidViewModel {
 
                 APIManager apiManager = new APIManager(getApplication());
 
-                HashMap<String, List<Horario>> map = apiManager.getHorario(curso, modulo);
+                HashMap<String, List<Contato>> map = apiManager.getContato();
 
                 result.postValue(map);
             }
