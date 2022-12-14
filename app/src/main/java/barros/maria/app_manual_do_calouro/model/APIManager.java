@@ -119,14 +119,14 @@ public class APIManager {
         List<Horario> horaList     = new ArrayList<>();
         HashMap<String, List<Horario>> map = new HashMap<>();
 
-        String email = Config.getLogin(context);
-        String senha = Config.getPassword(context);
+//        String email = Config.getLogin(context);
+//        String senha = Config.getPassword(context);
 
         HttpRequest httpRequest = new HttpRequest(Config.URL + "/horario", "GET", "UTF-8");
         httpRequest.addParam("curso", curso.toString());
         httpRequest.addParam("modulo", modulo.toString());
 
-        httpRequest.setBasicAuth(email, senha);
+//        httpRequest.setBasicAuth(email, senha);
 
         String result = "";
 
@@ -144,8 +144,10 @@ public class APIManager {
             int success = jsonObject.getInt("success");
 
             if (success == 1) {
-                JSONArray jsonArray = jsonObject.getJSONArray("aulas");
-                JSONArray jArrayHora = jsonObject.getJSONArray("horas");
+                JSONObject content = jsonObject.getJSONObject("content");
+
+                JSONArray jsonArray = content.getJSONArray("aulas");
+                JSONArray jArrayHora = content.getJSONArray("horas");
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jHorario = jsonArray.getJSONObject(i);

@@ -92,26 +92,117 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <HorizontalScrollView
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10"
+        android:layout_marginTop="3dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TableLayout
-                android:id="@+id/tlHorario"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TableLayout
+                        android:id="@+id/llHorario"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:stretchColumns="*"
+                        android:visibility="invisible">
+
+                        <TableRow
+                            android:id="@+id/llDiaSemana"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/table_cell_bg"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tvSeg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/table_cell_bg"
+                                android:text="Seg"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tvTer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/table_cell_bg"
+                                android:text="Ter"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tvQua"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/table_cell_bg"
+                                android:text="Qua"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tvQui"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/table_cell_bg"
+                                android:text="Qui"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tvSex"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/table_cell_bg"
+                                android:text="Sex"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tvSab"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/table_cell_bg"
+                                android:text="Sab"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_weight="1" />
+
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
-    </HorizontalScrollView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

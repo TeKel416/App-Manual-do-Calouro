@@ -2,32 +2,31 @@ package barros.maria.app_manual_do_calouro.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextClock;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import barros.maria.app_manual_do_calouro.R;
-import barros.maria.app_manual_do_calouro.model.APIManager;
 import barros.maria.app_manual_do_calouro.model.Horario;
+import barros.maria.app_manual_do_calouro.model.HorarioViewModel;
 
 public class HorarioActivity extends AppCompatActivity {
 
-    static int ADD_PRODUCT_ACTIVITY_RESULT = 1;
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,27 +35,12 @@ public class HorarioActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        HorarioViewModel horarioViewModel = new ViewModelProvider(this).get(HorarioViewModel.class);
+
         Button btnPesquisar = findViewById(R.id.btnPesquisar);
         btnPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                APIManager apiManager = new APIManager(getApplication());
-                HashMap<String, List<Horario>> map = new HashMap<>();
-
-                List<Horario> duplo = new ArrayList<>();
-                Horario a = new Horario();
-                a.sala = "-";
-                a.materia = "-";
-                a.professor = "-";
-
-                Horario b = new Horario();
-                b.sala = "-";
-                b.materia = "-";
-                b.professor = "-";
-
-                duplo.add(a);
-                duplo.add(b);
-
                 Integer curso = 0;
 
                 Spinner spinnerCurso = findViewById(R.id.spinnerCurso);
@@ -75,92 +59,121 @@ public class HorarioActivity extends AppCompatActivity {
 
                 Integer modulo = Integer.valueOf(sModulo);
 
-                TableLayout tlHorario = findViewById(R.id.tlHorario);
-                TableRow    trDia     = findViewById(R.id.trDiaSemana);
+                TableLayout tlHorario = findViewById(R.id.llHorario);
+                tlHorario.setVisibility(View.VISIBLE);
 
-                tlHorario.addView(trDia);
+                LiveData<HashMap<String, List<Horario>>> horariosLD = horarioViewModel.getHorariosLD(curso, modulo);
 
-                map = apiManager.getHorario(curso, modulo);
+                horariosLD.observe(HorarioActivity.this, new Observer<HashMap<String, List<Horario>>>() {
+                    @Override
+                    public void onChanged(HashMap<String, List<Horario>> map) {
+                        List<Horario> duplo = new ArrayList<>();
 
-                List<Horario> aulas = map.get("aulas");
+                        Horario gA = new Horario();
+                        gA.sala = "-";
+                        gA.materia = "-";
+                        gA.professor = "-";
 
-                List<Horario> horas = map.get("horas");
+                        Horario gB = new Horario();
+                        gB.sala = "-";
+                        gB.materia = "-";
+                        gB.professor = "-";
 
-                for (int i = 0; i < horas.toArray().length; i++) {
-                    int count = 0;
+                        duplo.add(gA);
+                        duplo.add(gB);
 
-                    Horario hora = horas.get(i);
+                        List<Horario> aulas = map.get("aulas");
 
-                    TableRow tr = new TableRow(getApplication());
+                        List<Horario> horas = map.get("horas");
 
-                    ConstraintLayout clHora = findViewById(R.id.clHora);
+                        int count = 0;
 
-                    tlHorario.addView(tr);
-                    tr.addView(clHora);
+                        for (int i = 0; i < horas.toArray().length; i++) {
+                            Horario hora = horas.get(i);
 
-                    TextView tvIni = findViewById(R.id.tvIni);
-                    tvIni.setText(hora.hora_aula_inicio);
-                    TextView tvFim = findViewById(R.id.tvFim);
-                    tvFim.setText(hora.hora_aula_fim);
+                            TableRow tr = new TableRow(HorarioActivity.this);
+                            tr.setLayoutParams(new TableLayout.LayoutParams(
+                            TableLayout.LayoutParams.MATCH_PARENT,
+                            TableLayout.LayoutParams.MATCH_PARENT, 1.0f));
 
-                    for (int j = 0; j < 6; j++) {
-                        LinearLayout lAula1 = findViewById(R.id.llAula1);
-                        LinearLayout lAula2 = findViewById(R.id.llAula2);
+                            tlHorario.addView(tr);
 
-                        Horario aula = aulas.get(count);
+                            LayoutInflater inflater = LayoutInflater.from(HorarioActivity.this);
+                            View v = inflater.inflate(R.layout.item_horario, tr, false);
+                            tr.addView(v);
 
-                        List<Horario> duble = duplo;
+                            TextView tvIni = v.findViewById(R.id.tvIni);
+                            tvIni.setText(hora.hora_aula_inicio);
+                            TextView tvFim = v.findViewById(R.id.tvFim);
+                            tvFim.setText(hora.hora_aula_fim);
 
-                        if (aula.grupo.equals("A") || aula.grupo.equals("C")) {
-                            a = duble.get(0);
-                            a.sala = aula.sala;
-                            a.materia = aula.materia;
-                            a.professor = aula.professor;
-                            duble.set(0, a);
+                            for (int j = 0; j < 6; j++) {
+                                LayoutInflater inflaterAula = LayoutInflater.from(HorarioActivity.this);
+                                View vAula = inflaterAula.inflate(R.layout.item_aula, tr, false);
+                                tr.addView(vAula);
 
-                            lAula2.setEnabled(false);
+                                LinearLayout lAula2 = vAula.findViewById(R.id.llAula2);
 
-                            if (aulas.get(count+1).grupo.equals("B")) {
-                                b = duble.get(1);
-                                b.sala = aulas.get(count+1).sala;
-                                b.materia = aulas.get(count+1).materia;
-                                b.professor = aulas.get(count+1).professor;
-                                duble.set(1, b);
-                                
-                                lAula2.setEnabled(true);
+                                Horario aula = aulas.get(count);
+
+                                Horario a = new Horario();
+                                a.sala = duplo.get(0).sala;
+                                a.materia = duplo.get(0).materia;
+                                a.professor = duplo.get(0).professor;
+
+                                Horario b = new Horario();
+                                b.sala = duplo.get(1).sala;
+                                b.materia = duplo.get(1).materia;
+                                b.professor = duplo.get(1).professor;
+
+                                if (aula.grupo.equals("A")) {
+                                    a.sala = aula.sala;
+                                    a.materia = aula.materia;
+                                    a.professor = aula.professor;
+
+                                    lAula2.setVisibility(View.VISIBLE);
+
+                                    if (aulas.get(count+1).grupo.equals("B")) {
+                                        b.sala = aulas.get(count+1).sala;
+                                        b.materia = aulas.get(count+1).materia;
+                                        b.professor = aulas.get(count+1).professor;
+
+                                        count++;
+                                    }
+
+                                } else if (aula.grupo.equals("B")) {
+                                    b.sala = aula.sala;
+                                    b.materia = aula.materia;
+                                    b.professor = aula.professor;
+
+                                    lAula2.setVisibility(View.VISIBLE);
+
+                                } else if (aula.grupo.equals("C")) {
+                                    a.sala = aula.sala;
+                                    a.materia = aula.materia;
+                                    a.professor = aula.professor;
+                                }
+
+                                TextView sala1 = vAula.findViewById(R.id.tvSalaAula1);
+                                sala1.setText(a.sala);
+                                TextView aula1 = vAula.findViewById(R.id.tvAula1);
+                                aula1.setText(a.materia);
+                                TextView prof1 = vAula.findViewById(R.id.tvProf1);
+                                prof1.setText(a.professor);
+
+                                TextView sala2 = vAula.findViewById(R.id.tvSalaAula2);
+                                sala2.setText(b.sala);
+                                TextView aula2 = vAula.findViewById(R.id.tvAula2);
+                                aula2.setText(b.materia);
+                                TextView prof2 = vAula.findViewById(R.id.tvProf2);
+                                prof2.setText(b.professor);
 
                                 count++;
                             }
-
-                        } else {
-                            b = duble.get(1);
-                            b.sala = aula.sala;
-                            b.materia = aula.materia;
-                            b.professor = aula.professor;
-                            duble.set(1, b);
-
-                            lAula2.setEnabled(true);
                         }
 
-                        tr.addView(lAula1);
-                        TextView sala1 = findViewById(R.id.tvSalaAula1);
-                        sala1.setText(duble.get(0).sala);
-                        TextView aula1 = findViewById(R.id.tvAula1);
-                        aula1.setText(duble.get(0).materia);
-                        TextView prof1 = findViewById(R.id.tvProf1);
-                        prof1.setText(duble.get(0).professor);
-
-                        tr.addView(lAula2);
-                        TextView sala2 = findViewById(R.id.tvSalaAula2);
-                        sala2.setText(duble.get(1).sala);
-                        TextView aula2 = findViewById(R.id.tvAula2);
-                        aula2.setText(duble.get(1).materia);
-                        TextView prof2 = findViewById(R.id.tvProf2);
-                        prof2.setText(duble.get(1).professor);
-
-                        count++;
                     }
-                }
+                });
             }
         });
     }
