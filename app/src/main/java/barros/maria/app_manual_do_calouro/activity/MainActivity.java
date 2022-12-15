@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(Config.URL + "/map"));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://10.0.2.2/manual-do-calouro/map"));
 
                 startActivity(i);
             }
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         btnRod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(Config.URL + "/rod"));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://10.0.2.2/manual-do-calouro/rod"));
 
                 startActivity(i);
             }
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         btnCalendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(Config.URL + "/calendar"));
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://10.0.2.2/manual-do-calouro/calendar"));
 
                 startActivity(i);
             }

@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 public class Config {
 
     // Endereço base do servidor web
-    public static String URL = "http://10.0.2.2:8080/manual-do-calouro/api/v1/android";
+    public static String URL = "http://10.0.2.2/manual-do-calouro/api/v1/android";
 
     /**
      * Método responsável por cadastrar um login no banco de dados
